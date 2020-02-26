@@ -14,7 +14,7 @@ const express = require("express");
 const http = require("http");
 const header = require('../../shepherd-header.js');
 
-console.log(header.display("Jeff", "Shepherd", "Assignment 2.2"));
+console.log(header.display("Jeff", "Shepherd", "Assignment 2.3"));
 console.log("");
 
 let app = express();
