@@ -1,3 +1,7 @@
+# docs
+.txt
+*.doc*
+
 # IDE
 .vscode
 .idea
