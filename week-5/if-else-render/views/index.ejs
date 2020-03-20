@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="utf-8">
+  <title>if...else...render</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" />
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Contact Us</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div role="main" class="container">
+    <br><br>
+    <h2>Name List</h2>
+
+    <% if (names.length > 0) { %>
+    <ul>
+      <% for (let i = 0; i < names.length; i++) { %>
+      <li>
+        <%= names[i] %>
+      </li>
+      <% } %>
+    </ul>
+   <% } %>
+
+  </div>
+</body>
+
+</html>
