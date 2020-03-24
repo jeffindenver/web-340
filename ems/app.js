@@ -43,11 +43,28 @@ app.use(logger("short"));
 
 app.get("/", function (request, response) {
   response.render("index", {
-    title: "Home page",
+    title: "Home page"
+  });
+});
+
+app.get("/list", function (request, response) {
+  response.render("list", {
+    title: "Employee List",
     employees: bobsEmployees
   });
 });
 
+app.get("/about", function (request, response) {
+  response.render("about", {
+    title: "About Bob's Factory"
+  });
+});
+
+app.get("/contact", function (request, response) {
+  response.render("contact", {
+    title: "Contact Bob's Factory"
+  });
+});
 
 http.createServer(app).listen(8080, function () {
   console.log("Application started on port 8080.");
