@@ -20,15 +20,34 @@ const logger = require("morgan");
 
 let app = express();
 
+let bobsEmployees = [{
+    firstName: "Jeff",
+    lastName: "Shepherd",
+    email: "jeff@email.com"
+  },
+  {
+    firstName: "Luke",
+    lastName: "Skywalker",
+    email: "luke@jediKnights.com"
+  },
+  {
+    firstName: "Han",
+    lastName: "Solo",
+    email: "scruffy@nerfherder.com"
+  }
+];
+
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(logger("short"));
 
 app.get("/", function (request, response) {
   response.render("index", {
-    title: "Home page"
+    title: "Home page",
+    employees: bobsEmployees
   });
 });
+
 
 http.createServer(app).listen(8080, function () {
   console.log("Application started on port 8080.");

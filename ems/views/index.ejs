@@ -4,30 +4,31 @@
 
 <body>
   <%- include("navbar") %>
-  <div>
-    <div>
-      <h1></h1>
-      <p>Template jumbotron</p>
+
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">Bob's Factory</h1>
+      <p>Employee Management System</p>
       <p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+        <a class="btn btn-primary btn-lg" href="#" role="button">Manage some employees &raquo;</a>
       </p>
     </div>
   </div>
 
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eum hic quibusdam amet ratione quia repellat
-          deserunt perspiciatis rerum. Incidunt eius beatae inventore assumenda ipsam fugit sapiente. Maiores, ipsam
-          nobis?
-        </p>
-      </div>
+      <h2>Employee Table</h2>
+    </div>
+    <div class="row">
+      <%- include("list") %>
+    </div>
+    <div class="row">
+      <%- include("new") %>
     </div>
 
     <%- include("footer") %>
   </div>
+
   <%- include("scripts") %>
 </body>
 
