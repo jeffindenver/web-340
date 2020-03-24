@@ -20,7 +20,7 @@ const mongoose = require("mongoose");
 
 let mongoDB = "mongodb+srv://jshepherd:71VwzVhDGq3DDozG@buwebdev-cluster-1-solm5.mongodb.net/test"
 
-mongoose.connect(mongoDB);
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on("error", console.error.bind(console, "MongoDB connected error: "));
@@ -30,6 +30,10 @@ db.once("open", function () {
 
 let app = express();
 app.use(logger("short"));
+
+app.get("/", function (request, response) {
+  response.send("Hello Mongo");
+});
 
 http.createServer(app).listen(8080, function () {
   console.log("Application connected to port 8080.");
