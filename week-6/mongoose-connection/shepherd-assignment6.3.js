@@ -1,6 +1,6 @@
 /*
 ===============================================================================
-; Title:  shepherd-assignment6.2.js
+; Title:  shepherd-assignment6.3.js
 ; Author: Professor Krasso
 ; Date:   3/20/2020
 ; Modified By: Jeff Shepherd
@@ -10,7 +10,7 @@
 "use strict";
 
 const header = require('../../shepherd-header.js');
-console.log(header.display("Jeff", "Shepherd", "Assignment 5.3"));
+console.log(header.display("Jeff", "Shepherd", "Assignment 6.3"));
 console.log("");
 
 const express = require("express");
