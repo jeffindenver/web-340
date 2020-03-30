@@ -10,7 +10,7 @@
 "use strict";
 
 const header = require('../shepherd-header.js');
-console.log(header.display("Jeff", "Shepherd", "Assignment 5.2"));
+console.log(header.display("Jeff", "Shepherd", "EMS assignment"));
 console.log("");
 
 const express = require("express");
