@@ -13,9 +13,8 @@ const fruits = require("../shepherd-fruits");
 const chai = require("chai");
 const assert = chai.assert;
 
-describe("fruits", function () {
+describe("String#split", function () {
   it("should return an array of fruits", function () {
-    let f = fruits("Apple,Orange,Mango");
-    assert(Array.isArray(f));
+    assert(Array.isArray("Apple,Orange,Mango".split(",")));
   });
 });
