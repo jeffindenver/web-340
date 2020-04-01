@@ -11,7 +11,7 @@
 
 const fruits = require("../shepherd-fruits");
 const chai = require("chai");
-const assert = chai.assert;
+const assert = require("assert");
 
 describe("String#split", function () {
   it("should return an array of fruits", function () {
