@@ -9,7 +9,6 @@
 */
 "use strict";
 
-const fruits = require("../shepherd-fruits");
 const assert = require("assert");
 
 describe("String#split", function () {
