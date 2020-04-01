@@ -17,25 +17,41 @@ const express = require("express");
 const http = require("http");
 const path = require("path");
 const logger = require("morgan");
+const mongoose = require("mongoose");
+const Employee = require("./models/employee");
 
-let app = express();
+const mongoDB = "mongodb+srv://jshepherd:71VwzVhDGq3DDozG@buwebdev-cluster-1-solm5.mongodb.net/test"
 
-let bobsEmployees = [{
+mongoose.connect(mongoDB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connected error: "));
+db.once("open", function () {
+  console.log("Application connected to MongoDB instance.");
+});
+
+let bobsEmployees = [
+  new Employee({
     firstName: "Jeff",
     lastName: "Shepherd",
     email: "jeff@email.com"
-  },
-  {
+  }),
+  new Employee({
     firstName: "Luke",
     lastName: "Skywalker",
     email: "luke@jediKnights.com"
-  },
-  {
+  }),
+  new Employee({
     firstName: "Han",
     lastName: "Solo",
     email: "scruffy@nerfherder.com"
-  }
+  })
 ];
+
+let app = express();
 
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
