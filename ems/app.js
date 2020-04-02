@@ -36,18 +36,15 @@ db.once("open", function () {
 let bobsEmployees = [
   new Employee({
     firstName: "Jeff",
-    lastName: "Shepherd",
-    email: "jeff@email.com"
+    lastName: "Shepherd"
   }),
   new Employee({
     firstName: "Luke",
-    lastName: "Skywalker",
-    email: "luke@jediKnights.com"
+    lastName: "Skywalker"
   }),
   new Employee({
     firstName: "Han",
-    lastName: "Solo",
-    email: "scruffy@nerfherder.com"
+    lastName: "Solo"
   })
 ];
 
