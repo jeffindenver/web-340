@@ -37,22 +37,9 @@ db.once("open", function () {
   console.log("Application connected to MongoDB instance.");
 });
 
-let bobsEmployees = [
-  new Employee({
-    firstName: "Jeff",
-    lastName: "Shepherd"
-  }),
-  new Employee({
-    firstName: "Luke",
-    lastName: "Skywalker"
-  }),
-  new Employee({
-    firstName: "Han",
-    lastName: "Solo"
-  })
-];
-
-let csrfProtection = csrf({cookie:true});
+let csrfProtection = csrf({
+  cookie: true
+});
 
 let app = express();
 
@@ -60,13 +47,15 @@ app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use(logger("short"));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
 app.use(csrfProtection);
 app.use(helmet.xssFilter());
 app.use(express.static(__dirname + "/public"));
 
-app.use(function(request, response, next) {
+app.use(function (request, response, next) {
   let token = request.csrfToken();
   response.cookie("XSRF-TOKEN", token);
   response.locals.csrfToken = token;
@@ -92,9 +81,15 @@ app.get("/contact", function (request, response) {
 });
 
 app.get("/list", function (request, response) {
-  response.render("list", {
-    title: "Employee List",
-    employees: bobsEmployees
+  Employee.find({}, function(error, employees) {
+    if(error) {
+      throw error;
+    }
+
+    response.render("list", {
+      title: "Employee List",
+      employees: employees
+    });
   });
 });
 
@@ -104,8 +99,8 @@ app.get("/new", function (request, response) {
   });
 });
 
-app.post("/process", function(request, response) {
-  if(!request.body.txtFirstName || !request.body.txtLastName) {
+app.post("/process", function (request, response) {
+  if (!request.body.txtFirstName || !request.body.txtLastName) {
     response.status(400).send("Entries must have a first and last name.");
     return;
   }
@@ -118,10 +113,16 @@ app.post("/process", function(request, response) {
     firstName: firstName,
     lastName: lastName
   });
+
+  employee.save(function (error) {
+    if (error) {
+      throw error;
+    }
+    console.log(firstName + " " + lastName + " saved successfully.");
+  });
+
+  response.redirect("/list");
 });
-
-
-
 
 http.createServer(app).listen(8080, function () {
   console.log("Application started on port 8080.");
