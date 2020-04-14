@@ -81,8 +81,8 @@ app.get("/contact", function (request, response) {
 });
 
 app.get("/list", function (request, response) {
-  Employee.find({}, function(error, employees) {
-    if(error) {
+  Employee.find({}, function (error, employees) {
+    if (error) {
       throw error;
     }
 
@@ -96,6 +96,26 @@ app.get("/list", function (request, response) {
 app.get("/new", function (request, response) {
   response.render("new", {
     title: "EMS | New"
+  });
+});
+
+app.get("/view/:queryName", function (request, response) {
+  let queryName = request.params.queryName;
+  Employee.find({
+    "lastName": queryName
+  }, function (error, viewList) {
+    if (error) {
+      throw error;
+    }
+
+    if (viewList.length > 0) {
+      response.render("view", {
+        title: "Employee Record",
+        viewList: viewList
+      });
+    } else {
+      response.redirect("/list");
+    }
   });
 });
 

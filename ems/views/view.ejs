@@ -3,25 +3,17 @@
 <%- include("navbar") %>
 
 <div class="container">
+  <br><br>
+  <h2>--Employee Record--</h2>
   <div class="row">
-    <h2>View Employee</h2>
+    <div class="form-group">
+      <label for="txtFirstName">First Name:</label>
+      <input type="text" class="form-control" id="txtFirstName" value="<%= viewList[0].firstName %>" name="txtFirstName">
+      <label for="txtLastName">Last Name:</label>
+      <input type="text" class="form-control" id="txtLastName" value="<%= viewList[0].lastName %>" name="txtLastName">
+    </div>
   </div>
-  <table>
-    <thead>
-      <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-  <tr>
-    <td>put first name</td>
-    <td>put last name</td>
-    <td>put email address</td>
-  </tr>
-    </tbody>
-  </table>
+
   <%- include("footer") %>
 </div>
 
