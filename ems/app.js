@@ -9,10 +9,6 @@
 */
 "use strict";
 
-const header = require('../shepherd-header.js');
-console.log(header.display("Jeff", "Shepherd", "EMS assignment"));
-console.log("");
-
 const express = require("express");
 const http = require("http");
 const path = require("path");
@@ -45,6 +41,7 @@ let app = express();
 
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
+app.set("port", process.env.PORT || 8080);
 
 app.use(logger("short"));
 app.use(bodyParser.urlencoded({
@@ -144,6 +141,6 @@ app.post("/process", function (request, response) {
   response.redirect("/list");
 });
 
-http.createServer(app).listen(8080, function () {
-  console.log("Application started on port 8080.");
+http.createServer(app).listen(app.get("port"), function () {
+  console.log("Application started on port " + app.get("port") + ".");
 });
